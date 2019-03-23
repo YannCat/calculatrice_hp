@@ -1,4 +1,5 @@
 #include "fonctions.hpp"
+#include "affichage.hpp"
 
 /* author : Maxime BELAVAL
  * ON NE MODIFIE PAS MON CODE SANS ME PREVENIR ET SANS MON AUTORISATION.

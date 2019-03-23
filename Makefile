@@ -2,7 +2,7 @@ CC=g++
 CFLAGS=-Wall -g -O0 -std=c++11
 TARGET_NAME=CalcPostFix
 TARGET_TEST=test-CPF
-SRC=src/main.cpp src/fonctions.cpp
+SRC=src/main.cpp src/fonctions.cpp src/affichage.cpp
 SRC_TEST=
 DEPS=-I inc/
 
