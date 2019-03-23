@@ -183,3 +183,69 @@ int checkInput(std::string const& userInput) {
 */
 //     --------------------------------------------------------------------------------------------------------------------------------------------------------------------------     //
 //     --------------------------------------------------------------------------------------------------------------------------------------------------------------------------     //
+
+/* @param     : /
+ * @return    : /
+ * @objectif  : manage the current output (GUI) with user's commands (input)
+ * @attributs : needed : std::string userInput; std::string input(""); unsigned int dotCounter(0); std::stack<std::string> sDigits; std::queue<std::string> qOperators;
+ */
+
+void userInputManagement(std::string const& userInput) {
+// un truc dans le genre : (voir mes dexu photos pour l'algo, il manque "++dotCounter;" sur la première image, dans le premier SINON SI)
+// on check si c'est que des digits, si oui, on recompose dans l'attribut userInput
+// sinon on check si c'est un dot, si oui, est-ce que la saisie actuelle n'en comporte qu'un
+// apres, on check si c'est un operator, on place les éléments dans la stack et la queue
+// on affiche la saisie actuelle en dépilant stack & queue
+// enfin, si userInput est "=", alors on lance le calcul avec toutes les fonctions au-dessus, et on clear/réinitialise les attributs concernés ici pour la prochaine saisie user
+
+    for(unsigned int i(0); i < userInput.length(); ++i) {
+        if( isdigit(userInput[i]) != 0 )
+            this->input += userInput[i];
+
+        else if( userInput[i] == '.' ) {
+            if( this->dotCounter == 0 ) {
+                this->input += userInput[i];
+                ++dotCounter;
+            }
+        } // end '.'
+
+        else if( userInput[i] == '+' ||
+                 userInput[i] == '-' ||
+                 userInput[i] == '*' ||
+                 userInput[i] == '/' ) {
+            if( this->input[length()-1] == '.' )
+                this->input += '0';
+
+            sDigits.push(this->input);
+            this->input = userInput;
+            qOperators.push(this->input);
+            this->input.clear();
+            this->dotCounter = 0;
+        }
+    } // end for
+
+    // Display the current user input
+    while(!sDigits.empty()) {
+        GUI.output << sDigits.back() << " ";
+        this->sDigits.pop();
+    }
+
+    while(!qOperators.empty()) {
+        GUI.output << qOperators.front() << " ";
+        this->qOperators.pop();
+    }
+
+    else if( userInput[i] == '=' ) {
+        // calcul...
+
+        // reset for next step
+        this->input.clear();
+        this->dotCounter = 0;
+        this->sDigits.clear();
+        this->qOperators.clear();
+    }
+
+    // grosso modo, c'est comme ça.
+    // c'est normal que cette fonction ne compile pas !
+
+} // end method

@@ -22,4 +22,7 @@ std::string evaluate_A_B_op(std::string operandA, std::string operandB, std::str
 std::string calculation(std::pair<std::stack<std::string>, std::queue<std::string> > myPair);
 int checkInput(std::string const& userInput);
 
+// à affiner et adapter à la GUI -- c'est donc normal que cette fonction ne compile pas !
+void userInputManagement(std::string const& userInput);
+
 #endif // FONCTIONS_HPP
