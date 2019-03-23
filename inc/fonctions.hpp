@@ -1,3 +1,6 @@
+#ifndef FONCTIONS_HPP
+#define FONCTIONS_HPP
+
 #include <iostream>     // cout, endl
 #include <string>	// string ; string::find ; stoi ; stod ; to_string
 #include <stack>        // stack - LIFO
@@ -7,9 +10,16 @@
 #include <locale>       // isdigit
 #include <exception>	// try {instructions} ; throw (type) ; catch{type const& name}
 
-using namespace std;
 
-pair<stack<string>, queue<string> > resultByStack(string const userInput);
-string evaluate_A_B_op(string operandA, string operandB, string operatorUsed);
-string calculation(pair<stack<string>, queue<string> > myPair);
-int checkInput(string const& userInput);
+/* author : Maxime BELAVAL
+ * ON NE MODIFIE PAS MON CODE SANS ME PREVENIR ET SANS MON AUTORISATION.
+ * ON N'UTILISE PAS DE NAMESPACE STD.
+ */
+
+// prototypes à mettre dans une classe, en privé
+std::pair<std::stack<std::string>, std::queue<std::string> > resultByStack(std::string const userInput);
+std::string evaluate_A_B_op(std::string operandA, std::string operandB, std::string operatorUsed);
+std::string calculation(std::pair<std::stack<std::string>, std::queue<std::string> > myPair);
+int checkInput(std::string const& userInput);
+
+#endif // FONCTIONS_HPP
